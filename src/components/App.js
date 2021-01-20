@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Searchbar from "./searchbar/Searchbar";
 import ImageGallery from "./imageGallery/ImageGallery";
 import fetchImg from "./api/api";
+import Button from "./button/Button";
 
 class App extends Component {
   state = {
@@ -24,6 +25,7 @@ class App extends Component {
       <div>
         <Searchbar onSubmit={this.getPhoto} />
         <ImageGallery images={images} />
+        <Button />
       </div>
     );
   }
