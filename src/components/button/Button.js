@@ -1,15 +1,13 @@
 import React from "react";
 
-const Button = () => {
+const Button = ({ onClick }) => {
   return (
     <>
-      <button className="btnLoad">Load more</button>
+      <button onClick={onClick} className="btnLoad">
+        Load more
+      </button>
     </>
   );
 };
 
 export default Button;
-// window.scrollTo({
-//   top: document.documentElement.scrollHeight,
-//   behavior: "smooth",
-// });
