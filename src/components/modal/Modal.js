@@ -20,7 +20,7 @@ class Modal extends Component {
     return (
       <div className="Overlay" onClick={this.props.onClose}>
         <div className="Modal">
-          <img src={this.props.imageURL} alt="" />
+          <img src={this.props.imageURL} alt={this.props.imageTags} />
         </div>
       </div>
     );

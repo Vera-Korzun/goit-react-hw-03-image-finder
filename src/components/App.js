@@ -14,6 +14,8 @@ class App extends Component {
     images: [],
     page: 1,
     query: "",
+    largeImageURL: "",
+    tags: "",
   };
 
   getPhoto = async (search, page = 1) => {
@@ -22,7 +24,7 @@ class App extends Component {
     this.setState({
       loading: true,
     });
-    console.log("state loading ", this.state.loading);
+    //console.log("state loading ", this.state.loading);
     const result = await fetchImg(search, page);
     this.setState((prev) => ({
       ...prev,
@@ -31,7 +33,6 @@ class App extends Component {
       query: search,
       loading: false,
       isOpenModal: false,
-      largeImageURL: "",
     }));
   };
 
@@ -53,13 +54,13 @@ class App extends Component {
     });
   };
 
-  openModal = (largeImageURL) => {
-    console.log(largeImageURL);
+  openModal = (largeImageURL, tags) => {
+    //console.log(largeImageURL. tags);
     this.setState({
       isOpenModal: true,
       largeImageURL: largeImageURL,
+      tags: tags,
     });
-    //console.log(e);
   };
 
   closeModal = () => {
@@ -67,7 +68,7 @@ class App extends Component {
   };
 
   render() {
-    const { images, loading, isOpenModal, largeImageURL } = this.state;
+    const { images, loading, isOpenModal, largeImageURL, tags } = this.state;
     return (
       <div>
         <Searchbar onSubmit={this.getPhoto} />
@@ -75,7 +76,11 @@ class App extends Component {
         <ImageGallery images={images} onClick={this.openModal} />
         {images.length > 0 && <Button onClick={this.loadMore} />}
         {isOpenModal && (
-          <Modal onClose={this.closeModal} imageURL={largeImageURL} />
+          <Modal
+            onClose={this.closeModal}
+            imageURL={largeImageURL}
+            imageTags={tags}
+          />
         )}
       </div>
     );

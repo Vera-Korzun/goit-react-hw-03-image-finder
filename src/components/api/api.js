@@ -10,7 +10,7 @@ const fetchImg = (query, page) => {
       }
     })
     .then((data) => {
-      console.log(data.hits);
+      //console.log(data.hits);
       return data.hits;
     });
 };
